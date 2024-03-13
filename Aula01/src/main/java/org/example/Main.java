@@ -1,20 +1,11 @@
 package org.example;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
-import org.example.JogadorGerador;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-
-        Random random = new Random();
 
         Map<String, String> uris = new HashMap<String, String>();
         uris.put("clubes", "https://venson.net.br/resources/data/clubes.txt");
@@ -22,38 +13,20 @@ public class Main {
         uris.put("sobrenomes", "https://venson.net.br/resources/data/sobrenomes.txt");
         uris.put("nomes", "https://venson.net.br/resources/data/nomes.txt");
 
-        String nome = null;
-        String sobrenome = null;
-        String clube = null;
-        String posicao = null;
-        int idade = random.nextInt(24) + 17;
+        JogadorGerador jogadorGerador = new JogadorGerador();
 
-        for (Map.Entry<String, String> entry : uris.entrySet()) {
+        jogadorGerador.buscarInformacoes(uris);
 
-            String[] listaInformacao = requisicao(entry.getValue());
+        Scanner inputUsuario = new Scanner(System.in);
+        System.out.println("Quantos jogadores você deseja gerar: ");
 
-            int numeroAleatorio = random.nextInt(listaInformacao.length);
+        int quantidadeJogadores = inputUsuario.nextInt();
 
-            switch (entry.getKey()) {
-                case "posicoes":
-                    posicao = listaInformacao[numeroAleatorio].replaceAll("\"","").replaceAll(",","");
-                    break;
-                case "nomes":
-                    nome = listaInformacao[numeroAleatorio].substring(0,1) + listaInformacao[numeroAleatorio].substring(1).toLowerCase();
-                    break;
-                case "sobrenomes":
-                    sobrenome = listaInformacao[numeroAleatorio].substring(0,1) + listaInformacao[numeroAleatorio].substring(1).toLowerCase();
-                    break;
-                case "clubes":
-                    clube = listaInformacao[numeroAleatorio];
-                    break;
-                default:
-                    // code block
-            }
+        for (int i = 0; i < quantidadeJogadores; i++) {
+            jogadorGerador.gerarJogador();
         }
 
-        String mensagem = MessageFormat.format("{0} {1} é um futebolista brasileiro de {2} anos que atua como {3}. Atualmente defende o {4}.", nome, sobrenome, idade, posicao, clube);
-        System.out.println(mensagem);
+        inputUsuario.close();
     }
 
 }
