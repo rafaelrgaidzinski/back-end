@@ -1,0 +1,45 @@
+package com.example.jogador.models;
+
+import jakarta.persistence.*;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import java.io.Serializable;
+import java.util.UUID;
+
+@Entity
+@EntityScan
+@Table(name="tb_sobrenomes")
+public class SobrenomeModel implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
+
+    @Column(nullable = false, length = 50)
+    private String sobrenome;
+
+    public SobrenomeModel() {
+    }
+
+    public SobrenomeModel(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
+}
