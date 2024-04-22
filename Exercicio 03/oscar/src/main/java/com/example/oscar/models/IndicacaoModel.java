@@ -6,8 +6,8 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-@Table(name = "TB_INDICATIONS")
-public class IndicationModel implements Serializable {
+@Table(name = "tb_indicacoes")
+public class IndicacaoModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -15,9 +15,9 @@ public class IndicationModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     @Column(nullable = false)
-    private UUID eligibleId;
+    private Indicavel indicavel;
     @Column(nullable = false, length = 50)
-    private String category;
+    private String categoria;
 
     public UUID getId() {
         return id;
@@ -27,19 +27,19 @@ public class IndicationModel implements Serializable {
         this.id = id;
     }
 
-    public UUID getEligibleId() {
-        return eligibleId;
+    public Indicavel getIndicavel() {
+        return indicavel;
     }
 
-    public void setEligibleId(UUID eligibleId) {
-        this.eligibleId = eligibleId;
+    public void setIndicavel(Indicavel indicavel) {
+        this.indicavel = indicavel;
     }
 
     public String getCategoria() {
-        return category;
+        return categoria;
     }
 
-    public void setCategoria(String category) {
-        this.category = category;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }
