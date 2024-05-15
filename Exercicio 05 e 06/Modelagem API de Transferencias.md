@@ -19,11 +19,14 @@
 * Alterar informações do usuário (`PUT`)
 * Excluir informações do usuário (`DELETE`)
 
-#### Requisição: Cadastrar usuário
+<br>
+
+### Requisição: Cadastrar usuário
 
 **Descrição:** Novo usuário realiza cadastro no sistema de transferências bancárias
 
 **URI:** /usuarios
+
 **Método HTTP:** POST
 
 **Corpo da requisição esperado:** 
@@ -48,12 +51,14 @@
 * Código de status: 400 (Bad Request) - A sintaxe da requisição ou as informações são inválidas
 * Código de status: 409 (Conflict) - Já existe um usuário cadastrado com o mesmo CPF.
 
+<br>
 
-#### Requisição: Recuperar informações do usuário
+### Requisição: Recuperar informações do usuário
 
 **Descrição:** Recuperar informações do usuário utilizando o ID como parametro.
 
 **URI:** /usuarios/{userId}
+
 **Método HTTP:** GET
 
 **Resposta da requisição esperada:**
@@ -75,12 +80,14 @@
 
 * Código de status: 404 (Not Found) - Usuário não encontrada.
 
+<br>
 
-#### Requisição: Alterar informações do usuário
+### Requisição: Alterar informações do usuário
 
 **Descrição:** O usuário deseja atualizar as informações do seu cadastro.
 
 **URI:** /usuarios/{userId}
+
 **Método HTTP:** PUT
 
 **Corpo da requisição esperado:** 
@@ -104,13 +111,15 @@
 
 * Código de status: 400 (Bad Request) - A sintaxe da requisição ou as informações são inválidas
 * Código de status: 404 (Not Found) - Usuário não encontrado.
-  
 
-#### Requisição: Excluir informações usuário
+<br>
+
+### Requisição: Excluir informações usuário
 
 **Descrição:** Exclui um usuário do sistema de transferência bancária
 
 **URI:** /usuarios/{userId}
+
 **Método HTTP:** DELETE
 
 **Resposta da requisição esperada:**
@@ -129,9 +138,11 @@ Antes de excluir um usuário, o sistema deve verificar se ele possui alguma pend
 Se o usuário tiver pendências, o sistema deve impedir a exclusão e informar ao usuário as pendências que precisam ser resolvidas antes da exclusão.
 O sistema deve registrar a data e hora da exclusão do usuário.
 
+<br>
 
-====================================================================================
+***
 
+<br>
 
 ### Tranferências:
 
@@ -140,12 +151,14 @@ O sistema deve registrar a data e hora da exclusão do usuário.
 * Alterar informações do tranferências (`PUT`)
 * Excluir informações do tranferências (`DELETE`)
 
+<br>
   
-#### Requisição: Realizar tranferências
+### Requisição: Realizar tranferências
 
 **Descrição:** Nova tranferência é realizada no sistema de transferências bancárias
 
 **URI:** /tranferencias
+
 **Método HTTP:** POST
 
 **Corpo da requisição esperado:**
@@ -173,12 +186,14 @@ O sistema deve registrar a data e hora da exclusão do usuário.
 * Código de status: 400 (Bad Request) - A sintaxe da requisição ou as informações são inválidas
 * Código de status: 409 (Conflict) - Já existe um pagamento com o mesmo valor e conta de destino para esta data.
 
+<br>
 
-#### Requisição: Recuperar informações da transferência
+### Requisição: Recuperar informações da transferência
 
 **Descrição:** Recuperar informações da transferência utilizando o ID como parametro.
 
 **URI:** /transferencias/{transferenciaId}
+
 **Método HTTP:** GET
 
 **Resposta da requisição esperada:**
@@ -202,12 +217,14 @@ O sistema deve registrar a data e hora da exclusão do usuário.
 
 * Código de status: 404 (Not Found) - Transferência não encontrada.
   
+<br>
 
-#### Requisição: Alterar informações da transferência
+### Requisição: Alterar informações da transferência
 
 **Descrição:** O usuário deseja alterar as informações da transferência antes que a transferência tenha sido efetuada.
 
 **URI:** /transferencias/{transferenciaId}
+
 **Método HTTP:** PUT
 
 **Corpo da requisição esperado:** 
@@ -233,12 +250,15 @@ O sistema deve registrar a data e hora da exclusão do usuário.
 
 * Código de status: 400 (Bad Request) - A sintaxe da requisição ou as informações são inválidas
 * Código de status: 404 (Not Found) - Transferência não encontrada.
-  
-#### Requisição: Excluir informações da transferência
+
+<br>
+
+### Requisição: Excluir informações da transferência
 
 **Descrição:** Exclui uma transferência do sistema de transferência bancário, antes que a transferência tenha sido efetuada.
 
 **URI:** /transferencias/{transferenciaId}
+
 **Método HTTP:** DELETE
 
 **Resposta da requisição esperada:**
