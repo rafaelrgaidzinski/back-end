@@ -10,9 +10,7 @@
 * Usuários
 * Transferências 
 
-## Endpoints
-
-### Usuário:
+## Endpoints Usuário:
 
 * Cadastrar usuário (`POST`)
 * Ler informações do usuário (`GET`)
@@ -140,11 +138,7 @@ O sistema deve registrar a data e hora da exclusão do usuário.
 
 <br>
 
-***
-
-<br>
-
-### Tranferências:
+## Endpoints Transferências:
 
 * Realizar tranferências (`POST`)
 * Ler informações do tranferências (`GET`)
