@@ -1,8 +1,3 @@
-Usuário -> Conta, Tipo de Conta (Pessoal - Comercial), e-mail, senha, nome, cpf , data de nascimento
-
-Transferências-> Valor, data transferência, Número Conta Origem, Nome Beneficiário, CPF Beneficiário,  Banco, Agencia, Número Conta Destino.
- 
-
 # Sistema de Tranferências Bancárias
 
 ## Casos de uso:
@@ -26,7 +21,7 @@ Transferências-> Valor, data transferência, Número Conta Origem, Nome Benefic
 
 #### Requisição: Cadastrar usuário
 
-**Descrição:** Novo usuário se cadastra no sistema de transferências bancárias
+**Descrição:** Novo usuário realiza cadastro no sistema de transferências bancárias
 
 **URI:** /usuarios
 **Método HTTP:** POST
@@ -58,12 +53,12 @@ Transferências-> Valor, data transferência, Número Conta Origem, Nome Benefic
 
 **Descrição:** Recuperar informações do usuário utilizando o ID como parametro.
 
-**URI:** /usuarios/{id}
+**URI:** /usuarios/{userId}
 **Método HTTP:** GET
 
 **Resposta da requisição esperada:**
 
-* Código de status: 200 (OK)
+* Código de status: 200 (OK) -
 
 ````json
 {
@@ -108,7 +103,7 @@ Transferências-> Valor, data transferência, Número Conta Origem, Nome Benefic
 **Erros da requisição esperados:**
 
 * Código de status: 400 (Bad Request) - A sintaxe da requisição ou as informações são inválidas
-* Código de status: 404 (Not Found) - Usuário não encontrada.
+* Código de status: 404 (Not Found) - Usuário não encontrado.
   
 
 #### Requisição: Excluir informações usuário
@@ -120,24 +115,18 @@ Transferências-> Valor, data transferência, Número Conta Origem, Nome Benefic
 
 **Resposta da requisição esperada:**
 
-* Código de status: 200 (OK) se a ação foi realizada e a mensagem de resposta inclui uma representação descrevendo o status.
-* Código de status: 204 (No Content) - Usuário excluído com sucesso
+* Código de status: 200 (OK) - Exclusão foi realizada (Mensagem de resposta: Usuário excluído com sucesso)
 
 **Erros da requisição esperados:**
 
 * Código de status: 401 (Unauthorized) - O token de acesso não é válido ou não foi informado
 * Código de status: 404 (Not Found) - Usuário com o ID informado não foi encontrado
 
-
-
 #### Observações:
 
 A exclusão de um usuário deve ser uma operação irreversível.
-
 Antes de excluir um usuário, o sistema deve verificar se ele possui alguma pendência no sistema, como pagamentos em aberto ou reembolsos a serem realizados.
-
 Se o usuário tiver pendências, o sistema deve impedir a exclusão e informar ao usuário as pendências que precisam ser resolvidas antes da exclusão.
-
 O sistema deve registrar a data e hora da exclusão do usuário.
 
 
@@ -156,7 +145,7 @@ O sistema deve registrar a data e hora da exclusão do usuário.
 
 **Descrição:** Nova tranferência é realizada no sistema de transferências bancárias
 
-**URI:** /tranferencias/
+**URI:** /tranferencias
 **Método HTTP:** POST
 
 **Corpo da requisição esperado:**
@@ -182,19 +171,19 @@ O sistema deve registrar a data e hora da exclusão do usuário.
 **Erros da requisição esperados:**
 
 * Código de status: 400 (Bad Request) - A sintaxe da requisição ou as informações são inválidas
-* Código de status: 409 (Conflict) - Já existe um pagamento com este valor, data e conta destino.
+* Código de status: 409 (Conflict) - Já existe um pagamento com o mesmo valor e conta de destino para esta data.
 
 
-#### Requisição: Recuperar tranferência pelo id
+#### Requisição: Recuperar informações da transferência
 
-**Descrição:** Recuperar tranferência pelo id
+**Descrição:** Recuperar informações da transferência utilizando o ID como parametro.
 
-**URI:** /transferencias/{id}
+**URI:** /transferencias/{transferenciaId}
 **Método HTTP:** GET
 
 **Resposta da requisição esperada:**
 
-* Código de status: 200 (OK)
+* Código de status: 200 (OK) -
 
 ````json
 {
@@ -214,11 +203,11 @@ O sistema deve registrar a data e hora da exclusão do usuário.
 * Código de status: 404 (Not Found) - Transferência não encontrada.
   
 
-#### Requisição: Alterar informações das transferências
+#### Requisição: Alterar informações da transferência
 
 **Descrição:** O usuário deseja alterar as informações da transferência antes que a transferência tenha sido efetuada.
 
-**URI:** /transferencias/{id}
+**URI:** /transferencias/{transferenciaId}
 **Método HTTP:** PUT
 
 **Corpo da requisição esperado:** 
@@ -244,40 +233,27 @@ O sistema deve registrar a data e hora da exclusão do usuário.
 
 * Código de status: 400 (Bad Request) - A sintaxe da requisição ou as informações são inválidas
 * Código de status: 404 (Not Found) - Transferência não encontrada.
-
   
-#### Requisição: Excluir informações transferências
+#### Requisição: Excluir informações da transferência
 
-**Descrição:** Exclui uma transferência do sistema de transferência bancária
+**Descrição:** Exclui uma transferência do sistema de transferência bancário, antes que a transferência tenha sido efetuada.
 
-**URI:** /transferencias/{id}
+**URI:** /transferencias/{transferenciaId}
 **Método HTTP:** DELETE
 
 **Resposta da requisição esperada:**
 
-* Código de status: 200 (OK) - Transferência excluída com sucesso.
-
+* Código de status: 200 (OK) - Transferência excluída com sucesso. (Mensagem de resposta: Transferência excluída com sucesso)
 
 **Erros da requisição esperados:**
 
-* Código de status: 401 (Unauthorized) - O token de acesso não é válido ou não foi informado
 * Código de status: 404 (Not Found) - Transferência com o ID informado não foi encontrado
-* Código de status: 403 (Forbidden) - O usuário não tem permissão para excluir a transferência informada.
+* Código de status: 403 (Forbidden) - O usuário não tem permissão para excluir transferências.
 
 
 #### Observações:
 
-A exclusão de um pagamento deve ser uma operação irreversível.
-Antes de excluir um pagamento, o sistema deve verificar se ele está em um estado que permite a exclusão, como pago e sem pendências.
+A exclusão de uma transferência deve ser uma operação irreversível.
+Antes de excluir uma transferência, o sistema deve verificar se a mesma está em um estado que permite a exclusão.
 Se a transferência estiver em um estado que não permite a exclusão, o sistema deve impedir a exclusão e informar ao usuário o motivo.
-O sistema deve registrar a data e hora da exclusão do pagamento.
-
-
-
-
-
-
-  
-
-
-
+O sistema deve registrar a data e hora da exclusão da transferência
