@@ -1,0 +1,21 @@
+2024-05-26 21:09:00.491060-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TB_CLIENTE" not found (this database is empty); SQL statement:
+insert into tb_cliente (nome,saldo,senha,id) values (?,?,?,?) [42104-224]
+2024-05-26 21:16:06.217608-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TB_CLIENTE" not found (this database is empty); SQL statement:
+insert into tb_cliente (nome,saldo,senha,id) values (?,?,?,?) [42104-224]
+2024-05-26 21:18:44.831360-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TB_CLIENTE" not found (this database is empty); SQL statement:
+insert into tb_cliente (nome,saldo,senha,id) values (?,?,?,?) [42104-224]
+2024-05-26 21:28:44.619808-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TB_CLIENTE" not found (this database is empty); SQL statement:
+insert into tb_cliente (nome,saldo,senha,id) values (?,?,?,?) [42104-224]
+2024-05-26 21:31:06.156212-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TB_CLIENTE" not found (this database is empty); SQL statement:
+insert into tb_cliente (nome,saldo,senha,id) values (?,?,?,?) [42104-224]
+2024-05-26 21:33:45.782880-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TB_CLIENTE" not found (this database is empty); SQL statement:
+insert into tb_cliente (nome,saldo,senha,id) values (?,?,?,?) [42104-224]
+2024-05-26 21:34:24.523749-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TB_CLIENTE" not found (this database is empty); SQL statement:
+insert into tb_cliente (nome,saldo,senha,id) values (?,?,?,?) [42104-224]
